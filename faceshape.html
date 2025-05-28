@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Face Shape Analyzer – GlowSpace</title>
+  <link rel="stylesheet" href="assets/css/faceshape.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1>📐 Face Shape Analyzer</h1>
+    <p>Kuis sederhana untuk mengetahui bentuk wajahmu!</p>
+  </header>
+
+  <main>
+    <h2 class="quiz-title">Face Shape Quiz</h2>
+    <form id="faceForm">
+
+      <div class="question">
+        <label>1. Apa bagian wajah terlebar kamu?</label>
+        <div class="option-group">
+          <label><input type="radio" name="width" value="forehead" required> Dahi</label>
+          <label><input type="radio" name="width" value="cheekbones"> Tulang pipi</label>
+          <label><input type="radio" name="width" value="jaw"> Rahang</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label>2. Bagaimana bentuk dagumu?</label>
+        <div class="option-group">
+          <label><input type="radio" name="chin" value="pointed" required> Runcing</label>
+          <label><input type="radio" name="chin" value="rounded"> Bulat</label>
+          <label><input type="radio" name="chin" value="flat"> Datar/lebar</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label>3. Seperti apa panjang wajahmu dibanding lebarnya?</label>
+        <div class="option-group">
+          <label><input type="radio" name="length" value="long" required> Lebih panjang dari lebar</label>
+          <label><input type="radio" name="length" value="short"> Pendek atau hampir sama</label>
+        </div>
+      </div>
+
+      <button type="submit">📊 Lihat Hasil</button>
+    </form>
+
+    <div id="result" class="result-box hidden">
+      <h2>Hasil Analisis:</h2>
+      <p id="faceType"></p>
+      <img id="faceImage" src="" alt="Hasil bentuk wajah" />
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="index.html" style="color: #d6336c; text-decoration: underline;">← Kembali ke Beranda</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GlowSpace – Personal Beauty Toolkit</p>
+  </footer>
+
+  <script>
+    document.getElementById('faceForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const width = document.querySelector('[name="width"]:checked')?.value;
+      const chin = document.querySelector('[name="chin"]:checked')?.value;
+      const length = document.querySelector('[name="length"]:checked')?.value;
+
+      let shape = '';
+      let image = '';
+
+      if (length === 'long' && width === 'forehead' && chin === 'pointed') {
+        shape = '💫 Bentuk Wajah Oval';
+        image = "face-oval.jpg";
+      } else if (length === 'short' && width === 'cheekbones' && chin === 'rounded') {
+        shape = '😊 Bentuk Wajah Bulat';
+        image = "face-round.jpg";
+      } else if (width === 'jaw' && chin === 'flat') {
+        shape = '🟥 Bentuk Wajah Kotak';
+        image = "face-square.jpg";
+      } else if (width === 'forehead' && chin === 'pointed') {
+        shape = '❤️ Bentuk Wajah Hati';
+        image = "face-heart.jpg";
+      } else {
+        shape = '💎 Bentuk Wajah Diamond';
+        image = "face-diamond.jpg";
+      }
+
+      document.getElementById('faceType').textContent = shape;
+      document.getElementById('faceImage').src = 'assets/img/' + image;
+      document.getElementById('faceImage').alt = shape;
+      document.getElementById('result').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
