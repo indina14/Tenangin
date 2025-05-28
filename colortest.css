@@ -1,0 +1,156 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('../img/wp6.jpg');
+  background-size: cover;            /* ✅ Membuat gambar menutupi seluruh background */
+  background-position: center;       /* ✅ Pusatkan gambar */
+  background-attachment: fixed;      /* ✅ Gambar tetap saat scroll */
+  background-repeat: no-repeat;
+  color: #4a4a4a;
+  margin: 0;
+  padding: 0;
+}
+
+/* HEADER */
+header {
+  background-color: #ffd6e6cc;       /* ✅ Tambah transparansi agar lembut */
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 20px 20px;      /* ✅ Tambah sudut bawah membulat */
+  margin-bottom: 1.5rem;
+}
+
+header h1 {
+  color: #d6336c;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Pacifico', cursive;  /* ✅ Gunakan font Pacifico yang sudah di-link */
+}
+
+header p {
+  color: #8b5e83;
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
+/* TEKS MOTIVASI */
+.motivasi {
+  text-align: center;
+  font-style: italic;
+  color: #b24577;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* FORM */
+main {
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: #ffffffd9;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+  margin-bottom: 2rem;
+}
+
+.question label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #fff8fa;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+button {
+  background-color: #d6336c;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #bf2c5a;
+}
+
+.result-box {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #a3336c;
+  text-align: center;
+  background-color: #ffe8f0;
+  padding: 1.2rem;
+  border-radius: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* FOOTER */
+ footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(255, 228, 225, 0.8);
+    color: #6f4d5b;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+  }
+/* ANIMASI */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.quiz-title {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #b82f6c;
+  margin-bottom: 1.5rem;
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.option-group label {
+  background-color: #fff4f7;
+  border: 1px solid #f3c8d8;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.option-group input[type="radio"] {
+  accent-color: #d6336c;
+  transform: scale(1.2);
+}
+
+.option-group label:hover {
+  background-color: #ffeaf0;
+}
