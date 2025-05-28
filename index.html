@@ -1,18 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>EmoSpace - Tulis Jurnal</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlowSpace – Personal Beauty Toolkit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <h1>EmoSpace</h1>
-  <form id="journalForm">
-    <textarea id="journalText" placeholder="Tulis isi hati kamu di sini..." rows="10" cols="50" required></textarea><br>
-    <button type="submit">Simpan & Analisis</button>
-  </form>
-  <div id="result"></div>
+  <header>
+    <h1>GlowSpace</h1>
+    <p>Your Personal Beauty Toolkit</p>
+    <p class="motivasi" id="motivasiText">✨ Cantik itu dimulai dari merawat diri sendiri ✨</p>
+  </header>
 
-  <script src="script.js"></script>
+  <main class="menu-section">
+    <h2>Pilih Menu</h2>
+    <div class="menu-grid">
+      <a href="Colortest.html" class="menu-button">
+        <img src="assets/img/personalcolor.jpg" alt="Personal Color Test" />
+        <span>🎨 Personal Color</span>
+      </a>
+      <a href="faceshape.html" class="menu-button">
+        <img src="assets/img/faceshape.jpg" alt="Face Shape Analyzer" />
+        <span>📐 Face Shape</span>
+      </a>
+      <a href="skinroutine.html" class="menu-button">
+        <img src="assets/img/skinrutin.jpg" alt="Skin Routine" />
+        <span>🧴 Skin Routine</span>
+      </a>
+      <a href="schedule.html" class="menu-button">
+        <img src="assets/img/jadwal.jpg" alt="Beauty Schedule" />
+        <span>📝 Schedule</span>
+      </a>
+      <a href="makeupstyle.html" class="menu-button premium">
+        <img src="assets/img/makeupstyle.jpg" alt="Makeup Library" />
+        <span>💄 Makeup style Library (premium)</span>
+      </a>
+      <a href="#skincare-consult" class="menu-button premium">
+        <img src="assets/img/konsul.jpg" alt="Konsultasi Skincare" />
+        <span>💬 Konsultasi Skincare (premium)</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Section placeholders -->
+  <section id="color-test"></section>
+  <section id="face-shape"></section>
+  <section id="skin-routine"></section>
+  <section id="beauty-schedule"></section>
+  <section id="makeup-library"></section>
+  <section id="glow-notes"></section>
+
+  <footer>
+    <p>&copy; 2025 GlowSpace by Indina. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const quotes = [
+      "✨ Cantik itu dimulai dari merawat diri sendiri ✨",
+      "🌸 Kamu cantik dengan caramu sendiri 🌸",
+      "💖 Rawat kulitmu seperti kamu merawat hatimu 💖",
+      "🌞 Kulit sehat, hati bahagia 🌞",
+      "🌿 Percaya diri itu skincare terbaikmu 🌿"
+    ];
+
+    let index = 0;
+    const motivasiText = document.getElementById('motivasiText');
+
+    setInterval(() => {
+      index = (index + 1) % quotes.length;
+      motivasiText.textContent = quotes[index];
+    }, 4000); // Ganti tiap 4 detik
+  </script>
 </body>
 </html>
