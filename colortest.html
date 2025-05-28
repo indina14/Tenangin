@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal Color Test – GlowSpace</title>
+  <link rel="stylesheet" href="assets/css/colortest.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1>🎨 Personal Color Test</h1>
+    <p>Temukan warna yang paling cocok untukmu!</p>
+  </header>
+
+  <main>
+    <h2 class="quiz-title">Personal Color Quiz</h2>
+    <form id="colorForm">
+      <div class="question">
+        <label>1. Bagaimana warna urat nadi di pergelangan tanganmu?</label>
+        <div class="option-group">
+          <label><input type="radio" name="veinColor" value="cool" /> Kebiruan / Keunguan</label>
+          <label><input type="radio" name="veinColor" value="warm" /> Kehijauan</label>
+          <label><input type="radio" name="veinColor" value="neutral" /> Sulit dibedakan</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label>2. Bagaimana kulitmu bereaksi saat terkena sinar matahari?</label>
+        <div class="option-group">
+          <label><input type="radio" name="sunReaction" value="cool" /> Mudah terbakar / memerah</label>
+          <label><input type="radio" name="sunReaction" value="warm" /> Cepat cokelat</label>
+          <label><input type="radio" name="sunReaction" value="neutral" /> Kadang memerah, kadang cokelat</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label>3. Warna perhiasan mana yang lebih cocok untukmu?</label>
+        <div class="option-group">
+          <label><input type="radio" name="jewelry" value="cool" /> Perak</label>
+          <label><input type="radio" name="jewelry" value="warm" /> Emas</label>
+          <label><input type="radio" name="jewelry" value="neutral" /> Keduanya cocok</label>
+        </div>
+      </div>
+
+      <button type="submit">🌈 Lihat Hasil</button> 
+    </form>
+
+    <div id="result" class="result-box hidden"></div>
+      <div style="text-align: center; margin-top: 2rem;">
+      <a href="index.html" style="color: #d6336c; text-decoration: underline;">← Kembali ke Beranda</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GlowSpace – Personal Beauty Toolkit</p>
+  </footer>
+
+  <script>
+    document.getElementById('colorForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const selected1 = document.querySelector('[name="veinColor"]:checked');
+      const selected2 = document.querySelector('[name="sunReaction"]:checked');
+      const selected3 = document.querySelector('[name="jewelry"]:checked');
+
+      if (!selected1 || !selected2 || !selected3) {
+        alert("Mohon jawab semua pertanyaan terlebih dahulu.");
+        return;
+      }
+
+      const values = [selected1.value, selected2.value, selected3.value];
+      const count = { cool: 0, warm: 0, neutral: 0 };
+      values.forEach(v => count[v]++);
+
+      let result = "";
+      if (count.cool >= 2) result = "❄️ Kamu termasuk Cool Tone!";
+      else if (count.warm >= 2) result = "☀️ Kamu termasuk Warm Tone!";
+      else result = "🌿 Kamu termasuk Neutral Tone!";
+
+      const resultBox = document.getElementById('result');
+      resultBox.textContent = result;
+      resultBox.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
