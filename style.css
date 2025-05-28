@@ -1,0 +1,138 @@
+/* style.css – Feminine & Minimalist Theme */
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff0f5;
+    color: #4a4a4a;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/wp8.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  header {
+    background-color: rgba(255, 228, 225, 0.8);
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+ header h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.8rem;
+  color: #d6336c;
+  margin: 0;
+}  
+  header p {
+    font-size: 1.1rem;
+    color: #8b5e83;
+  }
+  
+  .menu-section {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .menu-section h2 {
+    color: #c71585;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  padding: 1rem;
+}
+
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff7fa;
+  border: 2px solid #ffc0cb;
+  border-radius: 14px;
+  padding: 0.6rem;
+  text-decoration: none;
+  width: 100%;
+  max-width: 110px;
+  min-height: 120px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.menu-button:hover {
+  transform: translateY(-4px);
+  background: #ffeaf2;
+}
+
+.menu-button img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.4rem;
+  border: 2px solid #ffd6e8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.menu-button span {
+  font-size: 0.75rem;
+  color: #d6336c;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.premium {
+  border-color: #ec8ec4;
+  background: linear-gradient(to bottom right, #fff0f5, #fff);
+}
+
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(255, 228, 225, 0.8);
+    color: #6f4d5b;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+  }
+  .motivasi {
+  font-size: 1rem;
+  color: #a0527d;
+  font-style: italic;
+  margin-top: 0.5rem;
+  animation: fadeIn 0.5s ease;
+  transition: opacity 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+  
+  @media (max-width: 600px) {
+    .menu-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .menu-button {
+      font-size: 0.75rem;
+      padding: 0.6rem;
+      min-height: 80px;
+    }
+  }
