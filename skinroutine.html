@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skincare Routine – GlowSpace</title>
+  <link rel="stylesheet" href="assets/css/skinroutine.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .radio-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .radio-options label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      background-color: #fff7fa;
+      border: 1px solid #ffc0cb;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .radio-options label:hover {
+      background-color: #ffeef5;
+    }
+
+    .radio-options input[type="radio"] {
+      accent-color: #d6336c;
+    }
+
+    .premium-box {
+      background-color: #ffeef5;
+      padding: 1rem;
+      border-radius: 12px;
+    }
+
+    footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(255, 228, 225, 0.8);
+    color: #6f4d5b;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+  }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧴 Skin Routine Analyzer</h1>
+    <p>Temukan rutinitas skincare ideal sesuai jenis kulitmu</p>
+  </header>
+
+  <main>
+    <form id="skinForm">
+      <div class="question">
+        <label>1. Jenis kulitmu saat ini?</label>
+        <div class="radio-options">
+          <label><input type="radio" name="skinType" value="kering" required> Kulit Kering</label>
+          <label><input type="radio" name="skinType" value="berminyak"> Kulit Berminyak</label>
+          <label><input type="radio" name="skinType" value="kombinasi"> Kulit Kombinasi</label>
+          <label><input type="radio" name="skinType" value="sensitif"> Kulit Sensitif</label>
+        </div>
+      </div>
+
+      <button type="submit">Lihat Rutin</button>
+    </form>
+
+    <div id="routineResult" class="result-box hidden"></div>
+
+    <div id="premiumBox" class="result-box hidden premium-box">
+      <div id="premiumContent"></div>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="index.html" style="color: #d6336c; text-decoration: underline;">← Kembali ke Beranda</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GlowSpace – Personal Beauty Toolkit</p>
+  </footer>
+
+  <script>
+    const skinRoutines = {
+      kering: [
+        "🧼 Pembersih lembut (non-foam)",
+        "💧 Toner hydrating",
+        "🧪 Serum hyaluronic acid",
+        "🧴 Moisturizer rich cream",
+        "🌞 Sunscreen SPF 30+"
+      ],
+      berminyak: [
+        "🧼 Pembersih berbasis gel",
+        "💧 Toner dengan salicylic acid",
+        "🧪 Serum niacinamide",
+        "🧴 Moisturizer ringan/gel",
+        "🌞 Sunscreen matte finish"
+      ],
+      kombinasi: [
+        "🧼 Pembersih seimbang",
+        "💧 Toner ringan",
+        "🧪 Serum multivitamin",
+        "🧴 Moisturizer kombinasi",
+        "🌞 Sunscreen SPF 30+"
+      ],
+      sensitif: [
+        "🧼 Pembersih tanpa parfum",
+        "💧 Toner calming (chamomile)",
+        "🧪 Serum centella asiatica",
+        "🧴 Moisturizer hypoallergenic",
+        "🌞 Sunscreen physical (zinc oxide)"
+      ]
+    };
+
+    const isPremium = localStorage.getItem('isPremium') === 'true';
+
+    document.getElementById('skinForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const selected = document.querySelector('[name="skinType"]:checked');
+      if (!selected) {
+        alert("Mohon pilih jenis kulit.");
+        return;
+      }
+
+      const type = selected.value;
+      const resultBox = document.getElementById('routineResult');
+      const premiumBox = document.getElementById('premiumBox');
+      const premiumContent = document.getElementById('premiumContent');
+
+      resultBox.innerHTML = `<h3>🔍 Rutin Skincare untuk Kulit ${type.charAt(0).toUpperCase() + type.slice(1)}</h3><ul>` +
+        skinRoutines[type].map(item => `<li>${item}</li>`).join('') +
+        `</ul>`;
+      resultBox.classList.remove('hidden');
+
+      if (isPremium) {
+        premiumContent.innerHTML = `✨ <strong>Rekomendasi Produk Premium:</strong><ul><li>Brand A - Serum untuk kulit ${type}</li><li>Brand B - Moisturizer terbaik untuk ${type}</li></ul>`;
+      } else {
+        premiumContent.innerHTML = `
+          🔒 Ingin lihat rekomendasi produk skincare terbaik untukmu?
+          <br/><br/>
+          <a href="https://wa.me/6285754227018?text=Halo%20admin,%20saya%20ingin%20upgrade%20ke%20Premium%20untuk%20fitur%20Rekomendasi%20Skincare" target="_blank">
+            <button>Bayar & Hubungi Admin</button>
+          </a>
+        `;
+      }
+
+      premiumBox.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
